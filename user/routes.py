@@ -5,12 +5,6 @@ from flask_login import login_user, current_user, logout_user
 
 user_blueprint = Blueprint("user_api_routes",__name__,url_prefix='/api/user')
 
-
-@user_blueprint.route('/')
-def index():
-    return "Hello"
-
-
 @user_blueprint.route('/all', methods=['GET'])
 def get_all_users():
     all_users = User.query.all()
@@ -99,7 +93,7 @@ def user_exists(username):
 @user_blueprint.route('/', methods=["GET"])
 def get_current_user():
     if current_user.is_authenticated:
-        return make_response(jsonify({"user": current_user.seralize()}), 200)
+        return make_response(jsonify({"user": current_user.serialize()}), 200)
 
     return make_response(jsonify({"message": "No user logged in!"}), 401)
 
