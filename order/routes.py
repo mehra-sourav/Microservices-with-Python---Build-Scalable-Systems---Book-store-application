@@ -4,7 +4,7 @@ import requests
 
 order_blueprint = Blueprint('order_api_routes', __name__, url_prefix="/api/order")
 
-USER_API_URL = "http://127.0.0.1:5001/api/user"
+USER_API_URL = "http://user-service-container:5001/api/user"
 
 
 def get_user(api_key):

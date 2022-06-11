@@ -1,0 +1,15 @@
+version: "3.9"
+
+volumes:
+  userapp: {}
+
+services:
+  user-service:
+    container_name: user-service-container
+    build:
+      context: .
+    ports:
+      - "5001:5001"
+    volumes:
+      - userapp:/userapp
+    restart: always

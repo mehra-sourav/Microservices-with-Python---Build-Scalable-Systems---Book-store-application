@@ -5,6 +5,7 @@ from flask_login import login_user, current_user, logout_user
 
 user_blueprint = Blueprint("user_api_routes",__name__,url_prefix='/api/user')
 
+
 @user_blueprint.route('/all', methods=['GET'])
 def get_all_users():
     all_users = User.query.all()
@@ -62,7 +63,8 @@ def login():
         login_user(user)
         response = {
             "message": "User has been logged in!",
-            "api_key": user.api_key
+            "api_key": user.api_key,
+            "user": user.serialize()
         }
         return make_response(jsonify(response), 200)
 
